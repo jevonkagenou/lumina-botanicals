@@ -1070,39 +1070,47 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   line-height: 1.5;
 }
 
-/* RESPONSIVE */
+/* ==========================================
+   RESPONSIVE - K3VIEW
+   ========================================== */
+
+/* === Tablet <= 1024px === */
 @media (max-width: 1024px) {
   .dashboard-container {
     flex-direction: column;
+    min-height: unset;
   }
 
   .sidebar-areas {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #e2e8f0;
+    flex-shrink: 0;
   }
 
   .area-nav {
     flex-direction: row;
     overflow-x: auto;
-    padding: 1rem;
+    padding: 0.75rem 1rem 1rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    gap: 0.5rem;
   }
 
   .area-nav::-webkit-scrollbar { display: none; }
 
   .nav-item {
-    min-width: 220px;
+    min-width: 200px;
+    flex-shrink: 0;
+    border-radius: 12px;
   }
 
-  .active-indicator {
-    left: 10%;
-    bottom: 0;
-    top: auto;
-    width: 80%;
-    height: 4px;
-    border-radius: 4px 4px 0 0;
+  .nav-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .nav-item.active {
+    transform: translateY(-2px);
   }
 
   .bento-mitigation {
@@ -1112,22 +1120,25 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   .bento-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .bh-score {
     width: 100%;
+    max-width: 400px;
   }
 }
 
+/* === Small tablet / large phone <= 768px === */
 @media (max-width: 768px) {
   .k3-header {
-    padding: 3.5rem 1.25rem;
-    border-radius: 14px;
+    padding: 3.5rem 1.5rem;
+    border-radius: 16px;
   }
 
   .text-gradient {
     font-size: 1.8rem;
+    letter-spacing: -0.5px;
   }
 
   .header-content p {
@@ -1135,23 +1146,33 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   }
 
   .dashboard-main {
-    padding: 1.25rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .bento-container {
+    gap: 1.25rem;
   }
 
   .bento-header {
     padding: 1.25rem;
+    border-radius: 14px;
   }
 
   .bh-info h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    word-break: break-word;
   }
 
   .hazard-cards-wrapper {
     grid-template-columns: 1fr;
   }
 
+  .hazard-card {
+    padding: 1.25rem;
+  }
+
   .nav-item {
-    min-width: 180px;
+    min-width: 170px;
     padding: 10px 12px;
   }
 
@@ -1159,14 +1180,25 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
     font-size: 0.85rem;
   }
 
+  .nav-icon-wrapper {
+    width: 38px;
+    height: 38px;
+  }
+
   .video-grid {
     grid-template-columns: 1fr;
   }
+
+  .mitigation-box {
+    padding: 1.5rem 1.25rem;
+  }
 }
 
+/* === Phone <= 480px === */
 @media (max-width: 480px) {
   .k3-header {
-    padding: 2.5rem 1rem;
+    padding: 3rem 1.25rem;
+    border-radius: 14px;
   }
 
   .text-gradient {
@@ -1174,7 +1206,7 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   }
 
   .sidebar-header {
-    padding: 1rem;
+    padding: 1rem 1rem 0.75rem;
   }
 
   .sidebar-title {
@@ -1183,11 +1215,58 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
 
   .nav-item {
     min-width: 150px;
+    padding: 8px 10px;
   }
 
   .nav-icon-wrapper {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+
+  .nav-icon-wrapper svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .dashboard-main {
+    padding: 1rem 0.875rem;
+  }
+
+  .bento-header {
+    padding: 1rem;
+  }
+
+  .bh-info h2 {
+    font-size: 1.2rem;
+  }
+
+  .apd-tags {
+    gap: 0.5rem;
+  }
+
+  .apd-tag {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+  }
+
+  .task-list li {
+    font-size: 0.88rem;
+  }
+}
+
+/* === Very small phone <= 360px === */
+@media (max-width: 360px) {
+  .k3-header {
+    padding: 2.5rem 1rem;
+  }
+
+  .text-gradient {
+    font-size: 1.3rem;
+  }
+
+  .nav-item {
+    min-width: 130px;
   }
 }
 </style>

@@ -1050,12 +1050,14 @@ const updateTooltipPos = (e) => {
 }
 
 /* =========================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - MAP VIEW
    ========================================================================= */
+
+/* === Tablet <= 1024px === */
 @media (max-width: 1024px) {
   .map-header {
     padding: 3.5rem 1.5rem;
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .text-gradient {
@@ -1063,15 +1065,19 @@ const updateTooltipPos = (e) => {
   }
 
   .map-container-wrapper {
-    min-height: 400px;
+    min-height: 380px;
+    padding: 0.75rem;
   }
 
+  /* Reposition legend: take it out of absolute, put below map */
   .legend-panel {
     position: relative;
     bottom: auto;
     right: auto;
-    margin: 1rem;
+    margin: 0.75rem;
     pointer-events: auto;
+    width: calc(100% - 1.5rem);
+    box-sizing: border-box;
   }
 
   .map-view-wrapper {
@@ -1079,13 +1085,15 @@ const updateTooltipPos = (e) => {
   }
 }
 
+/* === Small Tablet / Large Phone <= 768px === */
 @media (max-width: 768px) {
   .map-header {
-    padding: 3rem 1.25rem;
+    padding: 3rem 1.5rem;
+    border-radius: 14px;
   }
 
   .text-gradient {
-    font-size: 1.7rem;
+    font-size: 1.75rem;
     letter-spacing: -0.5px;
   }
 
@@ -1095,57 +1103,84 @@ const updateTooltipPos = (e) => {
 
   .view-toggle {
     gap: 0.75rem;
+    padding: 0 0.25rem;
   }
 
   .view-toggle button {
-    padding: 0.5rem 1.1rem;
+    flex: 1;
+    padding: 0.6rem 1rem;
     font-size: 0.88rem;
+    justify-content: center;
   }
 
+  /* SVG map: let user scroll horizontally */
   .svg-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    cursor: default;
   }
 
   .lumina-map {
-    min-width: 700px;
-    width: 100%;
+    min-width: 680px;
+    width: auto;
+    max-width: none;
   }
 
+  /* Legend: compact grid */
   .legend-panel {
-    margin: 0.75rem;
     padding: 1rem;
     border-radius: 12px;
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+
+  .legend-panel h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
   }
 
   .legend-grid {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
 
+  .legend-item {
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  /* Org chart: horizontal scroll container */
   .org-view-wrapper {
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     align-items: flex-start;
     justify-content: flex-start;
+    min-height: 500px;
   }
 
   .org-tree {
-    transform: scale(0.8);
-    transform-origin: top center;
+    transform: scale(0.82);
+    transform-origin: top left;
+    white-space: nowrap;
   }
 }
 
+/* === Phone <= 480px === */
 @media (max-width: 480px) {
+  .map-header {
+    padding: 2.75rem 1.25rem;
+    border-radius: 12px;
+  }
+
   .text-gradient {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
   }
 
   .map-container-wrapper {
     padding: 0.5rem;
-    border-radius: 16px;
+    border-radius: 14px;
   }
 
   .legend-grid {
@@ -1157,16 +1192,52 @@ const updateTooltipPos = (e) => {
     font-size: 0.75rem;
   }
 
+  .legend-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .org-view-wrapper {
+    min-height: 400px;
+    padding: 0.75rem 0;
+  }
+
   .org-tree {
     transform: scale(0.65);
-    transform-origin: top center;
+    transform-origin: top left;
   }
 
   .map-tooltip {
-    font-size: 0.85rem;
-    padding: 0.75rem 1rem;
-    min-width: 160px;
-    max-width: 240px;
+    font-size: 0.82rem;
+    padding: 0.7rem 1rem;
+    min-width: 150px;
+    max-width: 220px;
+  }
+
+  .map-tooltip h4 {
+    font-size: 0.95rem;
+  }
+}
+
+/* === Very small phone <= 360px === */
+@media (max-width: 360px) {
+  .text-gradient {
+    font-size: 1.25rem;
+  }
+
+  .view-toggle button {
+    font-size: 0.82rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .org-tree {
+    transform: scale(0.55);
+    transform-origin: top left;
   }
 }
 </style>

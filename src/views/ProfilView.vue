@@ -641,32 +641,113 @@ const toggleAccordion = (id) => {
   margin-bottom: 0.8rem;
 }
 
-/* --- RESPONSIVE --- */
+/* ==========================================
+   RESPONSIVE - PROFIL VIEW
+   ========================================== */
+
+/* === Tablet <= 900px === */
 @media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
   .text-gradient { font-size: 2.5rem; }
   .profile-header { padding: 4rem 1.5rem; }
   .timeline-section { padding: 3rem 1.5rem; }
   .accordion-header { padding: 1.2rem 1.5rem; }
   .header-left { gap: 1rem; }
-  .legal-grid { grid-template-columns: 1fr; }
-  .section-title { font-size: 1.8rem; }
+  .legal-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .section-title { font-size: 1.9rem; }
+  .profile-page { gap: 3.5rem; }
 }
 
-@media (max-width: 600px) {
-  .profile-header { padding: 3rem 1.25rem; border-radius: 14px; }
-  .text-gradient { font-size: 2rem; letter-spacing: -0.5px; }
-  .header-content p { font-size: 1rem; }
-  .timeline-item { padding-left: 52px; margin-bottom: 2rem; }
-  .timeline-content { padding: 1.5rem; }
-  .timeline-content h4 { font-size: 1.2rem; }
+/* === Phone <= 768px === */
+@media (max-width: 768px) {
+  .profile-header {
+    padding: 3.5rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .text-gradient { font-size: 2.2rem; letter-spacing: -0.5px; }
+  .header-content p { font-size: 1.05rem; }
   .profile-page { gap: 3rem; }
-  .timeline-section { padding: 2.5rem 1rem; }
+  .timeline-section { padding: 2.5rem 1.25rem; border-radius: 18px; }
+  .timeline::before { left: 20px; }
+  .timeline-item { padding-left: 56px; margin-bottom: 2.5rem; }
+  .timeline-marker { left: 14px; }
+  .about-text p { font-size: 1.05rem; }
+  .bg-card { padding: 1.75rem; }
+}
+
+/* === Phone <= 600px === */
+@media (max-width: 600px) {
+  .profile-header {
+    padding: 3rem 1.25rem;
+    border-radius: 14px;
+  }
+
+  .text-gradient { font-size: 1.85rem; }
+  .header-content p { font-size: 1rem; }
+
+  .section-title { font-size: 1.6rem; }
+
+  .timeline-section {
+    padding: 2rem 1rem;
+    border-radius: 14px;
+  }
+
+  .timeline::before { left: 18px; }
+  .timeline-item { padding-left: 48px; margin-bottom: 2rem; }
+  .timeline-marker { left: 12px; top: 8px; width: 14px; height: 14px; }
+
+  .timeline-content {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .timeline-content h4 { font-size: 1.15rem; }
+  .timeline-content p { font-size: 0.95rem; }
+
   .about-text p { font-size: 1rem; }
   .bg-card { padding: 1.5rem; }
-  .accordion-header { padding: 1rem 1.25rem; }
-  .accordion-header h4 { font-size: 1.05rem; }
+  .bg-card h3 { font-size: 1.15rem; }
+
+  .accordion-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .accordion-header h4 {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
   .chapter-number { font-size: 1rem; }
-  .body-content { padding: 1.25rem; font-size: 0.95rem; }
+  .header-left { gap: 0.75rem; }
+
+  .body-content {
+    padding: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .legal-clause {
+    padding: 1.25rem;
+  }
+
+  .legal-header-box {
+    margin-bottom: 2rem;
+  }
+}
+
+/* === Very small phone <= 380px === */
+@media (max-width: 380px) {
+  .profile-header { padding: 2.5rem 1rem; }
+  .text-gradient { font-size: 1.6rem; }
+  .profile-page { gap: 2.5rem; }
+  .timeline-item { padding-left: 42px; }
+  .timeline-content { padding: 1rem; }
+  .accordion-header { padding: 0.875rem 1rem; }
+  .accordion-header h4 { font-size: 0.95rem; }
+  .body-content { padding: 1rem; font-size: 0.9rem; }
 }
 </style>

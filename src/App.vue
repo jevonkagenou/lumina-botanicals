@@ -186,6 +186,7 @@ body {
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .page-container {
@@ -211,15 +212,16 @@ body {
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(4, 120, 87, 0.1);
 }
 
 .navbar.scrolled {
   padding: 0.8rem 2rem;
-  box-shadow: var(--shadow-sm);
-  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom-color: #e2e8f0;
 }
 
 .nav-brand {
@@ -367,10 +369,12 @@ body {
 
 .footer-contact p {
   margin: 0 0 0.75rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 0.5rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .contact-label {
@@ -459,9 +463,10 @@ body {
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(4px);
-  z-index: 150;
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 300;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
@@ -472,12 +477,13 @@ body {
   width: 85%;
   max-width: 360px;
   height: 100%;
-  padding: 2rem 1.5rem;
-  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+  padding: env(safe-area-inset-top, 1.5rem) 1.5rem 2rem;
+  padding-top: max(env(safe-area-inset-top, 0px), 2rem);
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .mobile-menu-header {
@@ -566,6 +572,8 @@ body {
 /* =========================================================================
    RESPONSIVE DESIGN
    ========================================================================= */
+
+/* Tablet and below – show hamburger, hide desktop nav */
 @media (max-width: 900px) {
   .hamburger {
     display: flex;
@@ -576,32 +584,43 @@ body {
   }
 
   .navbar {
-    padding: 0.9rem 1.25rem;
+    padding: 0.85rem 1.5rem;
+  }
+
+  .navbar.scrolled {
+    padding: 0.7rem 1.5rem;
   }
 
   .content-wrapper {
-    padding: 2rem 1rem;
+    padding: 2rem 1.25rem;
   }
 }
 
+/* Small phones */
 @media (max-width: 480px) {
   .navbar {
     padding: 0.75rem 1rem;
   }
 
+  .navbar.scrolled {
+    padding: 0.6rem 1rem;
+  }
+
   .brand-name {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .brand-sub {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.3px;
   }
 
   .content-wrapper {
-    padding: 1.5rem 0.75rem;
+    padding: 1.5rem 1rem;
   }
 }
 
+/* Footer responsive */
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
@@ -609,11 +628,38 @@ body {
   }
 
   .app-footer {
-    padding: 3rem 1.25rem 1.5rem;
+    padding: 3rem 1.5rem 2rem;
+    margin-top: 2rem;
   }
 
-  .footer-contact p {
-    flex-wrap: wrap;
+  .footer-brand p {
+    max-width: 100%;
+  }
+
+  .contact-label {
+    min-width: 70px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .content-wrapper {
+    padding: 1.25rem 0.875rem;
+  }
+
+  .navbar {
+    padding: 0.7rem 0.875rem;
+  }
+
+  .brand-sub {
+    display: none;
   }
 }
 </style>

@@ -718,29 +718,36 @@ const submitLaporan = async () => {
   transform: translateY(20px);
 }
 
-/* --- RESPONSIVE --- */
+/* ==========================================
+   RESPONSIVE - LAPOR VIEW
+   ========================================== */
+
+/* === Tablet <= 900px === */
 @media (max-width: 900px) {
   .lapor-container {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .glass-panel {
-    padding: 1.5rem;
+    padding: 1.75rem;
   }
 }
 
-@media (max-width: 600px) {
+/* === Small tablet <= 768px === */
+@media (max-width: 768px) {
   .lapor-header {
-    padding: 3.5rem 1.25rem;
-    border-radius: 14px;
+    padding: 3.5rem 1.5rem;
+    border-radius: 16px;
   }
 
   .text-gradient {
-    font-size: 1.9rem;
+    font-size: 2.1rem;
     letter-spacing: -0.5px;
   }
 
@@ -748,37 +755,121 @@ const submitLaporan = async () => {
     font-size: 1rem;
   }
 
+  .lapor-page {
+    gap: 1.5rem;
+  }
+}
+
+/* === Phone <= 600px === */
+@media (max-width: 600px) {
+  .lapor-header {
+    padding: 3rem 1.25rem;
+    border-radius: 14px;
+  }
+
+  .text-gradient {
+    font-size: 1.75rem;
+  }
+
+  .glass-panel {
+    padding: 1.25rem;
+    border-radius: 14px;
+  }
+
   .panel-heading {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+    margin-bottom: 1.25rem;
   }
 
   .panel-heading h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+  }
+
+  .secure-badge {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .expert-form {
+    gap: 1.25rem;
   }
 
   .drop-zone {
     padding: 1.5rem 1rem;
   }
 
+  .drop-icon-svg {
+    width: 38px;
+    height: 38px;
+  }
+
   .btn-submit {
-    font-size: 1rem;
+    font-size: 0.95rem;
     padding: 1rem;
+  }
+
+  /* Table fixes for small screens */
+  .history-table {
+    font-size: 0.82rem;
+  }
+
+  .history-table th {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.68rem;
+  }
+
+  .history-table td {
+    padding: 0.7rem 0.6rem;
   }
 
   .status-badge {
     width: auto;
-    min-width: 80px;
+    min-width: 70px;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
   }
 
   .truncate {
-    max-width: 100px;
+    max-width: 80px;
   }
 
-  .history-table th, .history-table td {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.8rem;
+  .area-chip svg {
+    display: none;
+  }
+
+  .history-panel {
+    padding: 1.25rem 1rem;
+  }
+
+  .rules-card {
+    padding: 1.25rem;
+  }
+}
+
+/* === Very small phone <= 380px === */
+@media (max-width: 380px) {
+  .text-gradient {
+    font-size: 1.5rem;
+  }
+
+  .lapor-header {
+    padding: 2.5rem 1rem;
+  }
+
+  .glass-panel {
+    padding: 1rem;
+  }
+
+  .truncate {
+    max-width: 60px;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.75rem;
   }
 }
 </style>

@@ -45,22 +45,101 @@
               <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
               <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
             </svg>
-            <span class="brand-name">Lumina Botanicals</span>
+            <div class="mobile-brand-info">
+              <span class="brand-name">Lumina Botanicals</span>
+              <span class="mobile-brand-sub">Safety &amp; Compliance Portal</span>
+            </div>
           </div>
+
+          <div class="mobile-nav-section-label">Navigasi Utama</div>
+
           <nav class="mobile-nav-links">
-            <router-link to="/" exact-active-class="active" @click="mobileMenuOpen = false">🏠 Beranda</router-link>
-            <router-link to="/profil" active-class="active" @click="mobileMenuOpen = false">🏢 Profil Perusahaan</router-link>
-            <router-link to="/k3" active-class="active" @click="mobileMenuOpen = false">⚙️ Regulasi K3</router-link>
-            <router-link to="/map" active-class="active" @click="mobileMenuOpen = false">🗺️ Fasilitas &amp; Organisasi</router-link>
-            <router-link to="/lapor" active-class="active" class="mobile-btn-lapor" @click="mobileMenuOpen = false">
-              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                <line x1="12" y1="9" x2="12" y2="13"></line>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-              ⚠️ Lapor Insiden
+            <!-- Beranda -->
+            <router-link to="/" exact-active-class="active" @click="mobileMenuOpen = false">
+              <span class="mobile-nav-icon icon-home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </span>
+              <span class="mobile-nav-text">
+                <strong>Beranda</strong>
+                <small>Halaman utama</small>
+              </span>
+            </router-link>
+
+            <!-- Profil -->
+            <router-link to="/profil" active-class="active" @click="mobileMenuOpen = false">
+              <span class="mobile-nav-icon icon-profil">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <rect x="8" y="12" width="8" height="9"></rect>
+                  <path d="M9 3h6M12 3v9"></path>
+                </svg>
+              </span>
+              <span class="mobile-nav-text">
+                <strong>Profil Perusahaan</strong>
+                <small>Sejarah &amp; legalitas</small>
+              </span>
+            </router-link>
+
+            <!-- Regulasi K3 -->
+            <router-link to="/k3" active-class="active" @click="mobileMenuOpen = false">
+              <span class="mobile-nav-icon icon-k3">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </span>
+              <span class="mobile-nav-text">
+                <strong>Regulasi K3</strong>
+                <small>Matriks &amp; mitigasi risiko</small>
+              </span>
+            </router-link>
+
+            <!-- Fasilitas -->
+            <router-link to="/map" active-class="active" @click="mobileMenuOpen = false">
+              <span class="mobile-nav-icon icon-map">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                  <line x1="9" y1="3" x2="9" y2="18"></line>
+                  <line x1="15" y1="6" x2="15" y2="21"></line>
+                </svg>
+              </span>
+              <span class="mobile-nav-text">
+                <strong>Fasilitas &amp; Organisasi</strong>
+                <small>Denah &amp; struktur pabrik</small>
+              </span>
             </router-link>
           </nav>
+
+          <div class="mobile-nav-section-label" style="margin-top: 0.5rem;">Laporan &amp; Insiden</div>
+
+          <nav class="mobile-nav-links">
+            <!-- Lapor -->
+            <router-link to="/lapor" active-class="active" class="mobile-btn-lapor" @click="mobileMenuOpen = false">
+              <span class="mobile-nav-icon icon-lapor">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </span>
+              <span class="mobile-nav-text">
+                <strong>Lapor Insiden</strong>
+                <small>Kirim laporan keselamatan</small>
+              </span>
+            </router-link>
+          </nav>
+
+          <div class="mobile-menu-footer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            HSE Emergency: (021) 555-0100
+          </div>
         </div>
       </div>
     </transition>
@@ -494,55 +573,181 @@ body {
   border-bottom: 1px solid #f1f5f9;
 }
 
-.mobile-menu-header .brand-name {
-  font-size: 1.1rem;
+.mobile-brand-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.mobile-brand-sub {
+  font-size: 0.72rem;
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-top: 1px;
+}
+
+.mobile-nav-section-label {
+  font-size: 0.7rem;
   font-weight: 800;
-  color: var(--primary-dark);
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .mobile-nav-links a {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.875rem;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--text-muted);
-  padding: 0.9rem 1.2rem;
-  border-radius: 12px;
+  padding: 0.75rem 0.875rem;
+  border-radius: 14px;
   transition: all 0.2s ease;
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
+  background: transparent;
 }
 
 .mobile-nav-links a:hover {
-  background: #f1f5f9;
-  color: var(--text-main);
+  background: #f8fafc;
+  border-color: #e2e8f0;
 }
 
 .mobile-nav-links a.active {
-  background: #ecfdf5;
-  color: var(--primary);
-  border-color: #a7f3d0;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
 }
 
-.mobile-nav-links a.mobile-btn-lapor {
+/* Icon square */
+.mobile-nav-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.mobile-nav-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+.icon-home {
+  background: #ecfdf5;
+  color: var(--primary);
+}
+
+.icon-profil {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.icon-k3 {
+  background: #ecfdf5;
+  color: var(--primary-dark);
+}
+
+.icon-map {
+  background: #fefce8;
+  color: #ca8a04;
+}
+
+.icon-lapor {
   background: #fef2f2;
   color: var(--danger);
-  border-color: #fecaca;
-  margin-top: 1rem;
+}
+
+/* Active icon color boost */
+.mobile-nav-links a.active .icon-home,
+.mobile-nav-links a.active .icon-k3 {
+  background: #d1fae5;
+  color: var(--primary-dark);
+}
+
+.mobile-nav-links a.active .icon-profil {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.mobile-nav-links a.active .icon-map {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.mobile-nav-links a.active .icon-lapor {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Nav text block */
+.mobile-nav-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.mobile-nav-text strong {
+  font-size: 0.92rem;
   font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.mobile-nav-text small {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Lapor button styling */
+.mobile-nav-links a.mobile-btn-lapor {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.mobile-nav-links a.mobile-btn-lapor:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
 }
 
 .mobile-nav-links a.mobile-btn-lapor.active {
   background: var(--danger);
-  color: white;
   border-color: var(--danger);
+}
+
+.mobile-nav-links a.mobile-btn-lapor.active .mobile-nav-text strong,
+.mobile-nav-links a.mobile-btn-lapor.active .mobile-nav-text small {
+  color: white;
+}
+
+.mobile-nav-links a.mobile-btn-lapor.active .icon-lapor {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* Footer strip */
+.mobile-menu-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.78rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
 }
 
 /* Mobile menu animation */

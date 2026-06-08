@@ -21,7 +21,15 @@
           <h3 class="sidebar-title">ZONASI PABRIK</h3>
         </div>
 
-        <nav class="area-nav">
+        <nav class="area-nav" ref="areaNavRef">
+          <!-- Scroll hint (only visible on mobile via CSS) -->
+          <div class="scroll-hint-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            Geser untuk melihat zona lain
+          </div>
+
           <!-- Edukasi Tab (Top) -->
           <button :class="['nav-item', 'nav-edukasi', { active: activeTab === 'edukasi' }]" @click="activeTab = 'edukasi'">
             <div class="active-indicator" v-if="activeTab === 'edukasi'"></div>
@@ -460,6 +468,25 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  position: relative;
+}
+
+/* Scroll hint badge — hidden on desktop, shown on mobile */
+.scroll-hint-badge {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f0fdf4;
+  color: var(--primary-dark);
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .nav-item {
@@ -469,8 +496,8 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   gap: 12px;
   width: 100%;
   padding: 12px 16px;
-  background: transparent;
-  border: 1px solid transparent;
+  background: #fafafa;
+  border: 1px solid #f1f5f9;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -542,14 +569,18 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
 }
 
 .status-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
   transition: all 0.3s ease;
 }
 
@@ -1084,8 +1115,13 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   .sidebar-areas {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 2px solid #e2e8f0;
     flex-shrink: 0;
+  }
+
+  /* Show the scroll hint badge */
+  .scroll-hint-badge {
+    display: flex;
   }
 
   .area-nav {
@@ -1095,23 +1131,48 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     gap: 0.5rem;
+    align-items: center;
   }
 
   .area-nav::-webkit-scrollbar { display: none; }
 
+  /* On horizontal scroll: hide the icon to save space, show only text + dot */
+  .nav-icon-wrapper {
+    display: none;
+  }
+
   .nav-item {
-    min-width: 200px;
+    min-width: 150px;
     flex-shrink: 0;
     border-radius: 12px;
+    padding: 10px 14px;
+    gap: 8px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
   }
 
   .nav-item:hover {
     transform: translateY(-2px);
+    border-color: #a7f3d0;
+    background: #f0fdf4;
   }
 
   .nav-item.active {
     transform: translateY(-2px);
+    background: #ecfdf5;
+    border-color: #34d399;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
   }
+
+  .nav-item.active .nav-label {
+    color: var(--primary-dark);
+  }
+
+  .nav-label {
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
 
   .bento-mitigation {
     grid-template-columns: 1fr;

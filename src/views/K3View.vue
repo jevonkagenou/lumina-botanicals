@@ -21,14 +21,15 @@
           <h3 class="sidebar-title">ZONASI PABRIK</h3>
         </div>
 
+        <!-- Scroll hint (only visible on mobile via CSS) -->
+        <div class="scroll-hint-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          Geser area di bawah untuk navigasi zona
+        </div>
+
         <nav class="area-nav" ref="areaNavRef">
-          <!-- Scroll hint (only visible on mobile via CSS) -->
-          <div class="scroll-hint-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-            Geser untuk melihat zona lain
-          </div>
 
           <!-- Edukasi Tab (Top) -->
           <button :class="['nav-item', 'nav-edukasi', { active: activeTab === 'edukasi' }]" @click="activeTab = 'edukasi'">
@@ -475,18 +476,17 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
 .scroll-hint-badge {
   display: none;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 0.5rem;
   background: #f0fdf4;
   color: var(--primary-dark);
-  border: 1px solid #bbf7d0;
-  border-radius: 8px;
-  padding: 0.45rem 0.85rem;
-  font-size: 0.73rem;
+  border-bottom: 1px solid #bbf7d0;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.3px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  align-self: flex-start;
+  width: 100%;
+  text-align: center;
 }
 
 .nav-item {

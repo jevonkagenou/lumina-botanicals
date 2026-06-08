@@ -252,16 +252,18 @@
 }
 
 .btn {
-  padding: 1.1rem 2.2rem;
+  padding: 1.15rem 2.2rem 0.95rem;
   border-radius: 8px; /* More corporate sharp edges instead of pills */
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.2;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  box-sizing: border-box;
 }
 
 .btn-glow {
@@ -566,7 +568,7 @@
   .hero-title { font-size: 2.4rem; letter-spacing: -0.75px; margin-bottom: 1rem; }
   .hero-description { font-size: 1rem; max-width: 100%; margin-bottom: 2.5rem; line-height: 1.65; }
   .hero-actions { flex-direction: column; gap: 0.875rem; }
-  .btn { width: 100%; justify-content: center; padding: 0.9rem 1.5rem; }
+  .btn { width: 100%; justify-content: center; padding: 0.95rem 1.5rem 0.75rem; }
   .stats-section { grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0; padding: 0; }
   .stat-number { font-size: 2.5rem; }
   .stat-card { padding: 1.5rem 1.25rem; }

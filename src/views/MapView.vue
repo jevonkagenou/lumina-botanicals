@@ -1032,4 +1032,142 @@ const updateTooltipPos = (e) => {
   flex-direction: column;
   align-items: center;
 }
+
+/* FADE-SLIDE TRANSITION */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================= */
+@media (max-width: 1024px) {
+  .map-header {
+    padding: 3.5rem 1.5rem;
+    border-radius: 14px;
+  }
+
+  .text-gradient {
+    font-size: 2rem;
+  }
+
+  .map-container-wrapper {
+    min-height: 400px;
+  }
+
+  .legend-panel {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 1rem;
+    pointer-events: auto;
+  }
+
+  .map-view-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-header {
+    padding: 3rem 1.25rem;
+  }
+
+  .text-gradient {
+    font-size: 1.7rem;
+    letter-spacing: -0.5px;
+  }
+
+  .map-header p {
+    font-size: 1rem;
+  }
+
+  .view-toggle {
+    gap: 0.75rem;
+  }
+
+  .view-toggle button {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.88rem;
+  }
+
+  .svg-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .lumina-map {
+    min-width: 700px;
+    width: 100%;
+  }
+
+  .legend-panel {
+    margin: 0.75rem;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .org-view-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .org-tree {
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-gradient {
+    font-size: 1.4rem;
+  }
+
+  .map-container-wrapper {
+    padding: 0.5rem;
+    border-radius: 16px;
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .legend-item {
+    font-size: 0.75rem;
+  }
+
+  .org-tree {
+    transform: scale(0.65);
+    transform-origin: top center;
+  }
+
+  .map-tooltip {
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    min-width: 160px;
+    max-width: 240px;
+  }
+}
 </style>
+

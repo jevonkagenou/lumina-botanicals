@@ -539,12 +539,38 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
-  .hero-title { font-size: 3.5rem; }
-  .pillars-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-title { font-size: 3rem; }
+  .pillars-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .stat-card.highlight-metric { transform: translateY(0); }
   .stat-card.highlight-metric:hover { transform: translateY(-5px); }
-  .hero-actions { flex-direction: column; }
   .stats-section { margin-top: 2rem; padding: 0; }
-  .hero-section { padding: 4rem 2rem; }
+  .hero-section { padding: 5rem 3rem; }
+}
+
+@media (max-width: 768px) {
+  .home-page { gap: 3rem; }
+  .hero-section { padding: 4rem 1.5rem; border-radius: 16px; min-height: unset; }
+  .hero-title { font-size: 2.2rem; letter-spacing: -0.5px; margin-bottom: 1rem; }
+  .hero-description { font-size: 1rem; max-width: 100%; margin-bottom: 2.5rem; }
+  .hero-actions { flex-direction: column; gap: 1rem; }
+  .btn { width: 100%; justify-content: center; padding: 0.9rem 1.5rem; }
+  .stats-section { grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0; padding: 0; }
+  .stat-number { font-size: 2.5rem; }
+  .stat-card { padding: 1.5rem; }
+  .pillars-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .pillar-card { padding: 2rem 1.5rem; }
+  .section-header h2 { font-size: 1.8rem; }
+  .section-header { margin-bottom: 2.5rem; }
+  .bottom-cta-premium { padding: 4rem 1.5rem; border-radius: 16px; }
+  .cta-content h2 { font-size: 1.8rem; }
+  .cta-content p { font-size: 1rem; }
+  .badge-pill { font-size: 0.75rem; padding: 0.45rem 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-section { padding: 3rem 1.25rem; }
+  .hero-title { font-size: 1.9rem; }
+  .stats-section { grid-template-columns: 1fr; }
+  .stat-card.highlight-metric { transform: translateY(0); }
 }
 </style>

@@ -732,4 +732,53 @@ const submitLaporan = async () => {
     padding: 1.5rem;
   }
 }
+
+@media (max-width: 600px) {
+  .lapor-header {
+    padding: 3.5rem 1.25rem;
+    border-radius: 14px;
+  }
+
+  .text-gradient {
+    font-size: 1.9rem;
+    letter-spacing: -0.5px;
+  }
+
+  .header-content p {
+    font-size: 1rem;
+  }
+
+  .panel-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .panel-heading h3 {
+    font-size: 1.2rem;
+  }
+
+  .drop-zone {
+    padding: 1.5rem 1rem;
+  }
+
+  .btn-submit {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .status-badge {
+    width: auto;
+    min-width: 80px;
+  }
+
+  .truncate {
+    max-width: 100px;
+  }
+
+  .history-table th, .history-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
 </style>

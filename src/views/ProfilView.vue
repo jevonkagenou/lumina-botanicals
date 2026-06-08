@@ -650,5 +650,23 @@ const toggleAccordion = (id) => {
   .accordion-header { padding: 1.2rem 1.5rem; }
   .header-left { gap: 1rem; }
   .legal-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.8rem; }
+}
+
+@media (max-width: 600px) {
+  .profile-header { padding: 3rem 1.25rem; border-radius: 14px; }
+  .text-gradient { font-size: 2rem; letter-spacing: -0.5px; }
+  .header-content p { font-size: 1rem; }
+  .timeline-item { padding-left: 52px; margin-bottom: 2rem; }
+  .timeline-content { padding: 1.5rem; }
+  .timeline-content h4 { font-size: 1.2rem; }
+  .profile-page { gap: 3rem; }
+  .timeline-section { padding: 2.5rem 1rem; }
+  .about-text p { font-size: 1rem; }
+  .bg-card { padding: 1.5rem; }
+  .accordion-header { padding: 1rem 1.25rem; }
+  .accordion-header h4 { font-size: 1.05rem; }
+  .chapter-number { font-size: 1rem; }
+  .body-content { padding: 1.25rem; font-size: 0.95rem; }
 }
 </style>

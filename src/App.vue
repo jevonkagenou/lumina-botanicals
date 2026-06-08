@@ -8,14 +8,23 @@
         </svg>
         <div class="brand-text">
           <span class="brand-name">Lumina Botanicals</span>
-          <span class="brand-sub">Safety & Compliance</span>
+          <span class="brand-sub">Safety &amp; Compliance</span>
         </div>
       </div>
+
+      <!-- Hamburger Button (mobile only) -->
+      <button class="hamburger" @click="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen" aria-label="Toggle navigation">
+        <span :class="{ 'open': mobileMenuOpen }"></span>
+        <span :class="{ 'open': mobileMenuOpen }"></span>
+        <span :class="{ 'open': mobileMenuOpen }"></span>
+      </button>
+
+      <!-- Desktop nav -->
       <div class="nav-links">
         <router-link to="/" exact-active-class="active">Beranda</router-link>
         <router-link to="/profil" active-class="active">Profil Perusahaan</router-link>
         <router-link to="/k3" active-class="active">Regulasi K3</router-link>
-        <router-link to="/map" active-class="active">Fasilitas & Organisasi</router-link>
+        <router-link to="/map" active-class="active">Fasilitas &amp; Organisasi</router-link>
         <router-link to="/lapor" active-class="active" class="btn-lapor">
           <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
@@ -26,6 +35,35 @@
         </router-link>
       </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <transition name="mobile-menu">
+      <div v-if="mobileMenuOpen" class="mobile-menu-overlay" @click.self="mobileMenuOpen = false">
+        <div class="mobile-menu-panel">
+          <div class="mobile-menu-header">
+            <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+            <span class="brand-name">Lumina Botanicals</span>
+          </div>
+          <nav class="mobile-nav-links">
+            <router-link to="/" exact-active-class="active" @click="mobileMenuOpen = false">🏠 Beranda</router-link>
+            <router-link to="/profil" active-class="active" @click="mobileMenuOpen = false">🏢 Profil Perusahaan</router-link>
+            <router-link to="/k3" active-class="active" @click="mobileMenuOpen = false">⚙️ Regulasi K3</router-link>
+            <router-link to="/map" active-class="active" @click="mobileMenuOpen = false">🗺️ Fasilitas &amp; Organisasi</router-link>
+            <router-link to="/lapor" active-class="active" class="mobile-btn-lapor" @click="mobileMenuOpen = false">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              ⚠️ Lapor Insiden
+            </router-link>
+          </nav>
+        </div>
+      </div>
+    </transition>
 
     <main class="content-wrapper">
       <router-view v-slot="{ Component, route }">
@@ -51,7 +89,7 @@
         <div class="footer-links">
           <h5>Tautan Cepat</h5>
           <router-link to="/">Beranda Utama</router-link>
-          <router-link to="/profil">Sejarah & Legalitas</router-link>
+          <router-link to="/profil">Sejarah &amp; Legalitas</router-link>
           <router-link to="/k3">Matriks Mitigasi</router-link>
         </div>
         <div class="footer-contact">
@@ -62,7 +100,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; {{ new Date().getFullYear() }} PT Lumina Natura Indonesia. Mematuhi Standar Mutu BPOM & SMK3 Nasional.</p>
+        <p>&copy; {{ new Date().getFullYear() }} PT Lumina Natura Indonesia. Mematuhi Standar Mutu BPOM &amp; SMK3 Nasional.</p>
       </div>
     </footer>
   </div>
@@ -72,6 +110,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const isScrolled = ref(false)
+const mobileMenuOpen = ref(false)
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20
@@ -368,27 +407,213 @@ body {
 }
 
 /* =========================================================================
+   HAMBURGER BUTTON
+   ========================================================================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  z-index: 200;
+}
+
+.hamburger:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-main);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.hamburger span.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger span.open:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger span.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================================
+   MOBILE MENU OVERLAY
+   ========================================================================= */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 150;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.mobile-menu-panel {
+  background: #ffffff;
+  width: 85%;
+  max-width: 360px;
+  height: 100%;
+  padding: 2rem 1.5rem;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.mobile-menu-header .brand-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-muted);
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.mobile-nav-links a:hover {
+  background: #f1f5f9;
+  color: var(--text-main);
+}
+
+.mobile-nav-links a.active {
+  background: #ecfdf5;
+  color: var(--primary);
+  border-color: #a7f3d0;
+}
+
+.mobile-nav-links a.mobile-btn-lapor {
+  background: #fef2f2;
+  color: var(--danger);
+  border-color: #fecaca;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.mobile-nav-links a.mobile-btn-lapor.active {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+/* Mobile menu animation */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-enter-active .mobile-menu-panel,
+.mobile-menu-leave-active .mobile-menu-panel {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+}
+
+.mobile-menu-enter-from .mobile-menu-panel {
+  transform: translateX(100%);
+}
+
+.mobile-menu-leave-to .mobile-menu-panel {
+  transform: translateX(100%);
+}
+
+/* =========================================================================
    RESPONSIVE DESIGN
    ========================================================================= */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    padding: 1rem;
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
   }
-  
+
   .nav-links {
-    margin-top: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: none;
   }
-  
-  .nav-links a.btn-lapor {
-    margin-left: 0;
+
+  .navbar {
+    padding: 0.9rem 1.25rem;
   }
-  
+
+  .content-wrapper {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .brand-sub {
+    font-size: 0.7rem;
+  }
+
+  .content-wrapper {
+    padding: 1.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .app-footer {
+    padding: 3rem 1.25rem 1.5rem;
+  }
+
+  .footer-contact p {
+    flex-wrap: wrap;
   }
 }
 </style>

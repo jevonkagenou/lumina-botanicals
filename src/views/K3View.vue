@@ -1086,10 +1086,14 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
     flex-direction: row;
     overflow-x: auto;
     padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
 
+  .area-nav::-webkit-scrollbar { display: none; }
+
   .nav-item {
-    min-width: 260px;
+    min-width: 220px;
   }
 
   .active-indicator {
@@ -1109,6 +1113,81 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
+  }
+
+  .bh-score {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .k3-header {
+    padding: 3.5rem 1.25rem;
+    border-radius: 14px;
+  }
+
+  .text-gradient {
+    font-size: 1.8rem;
+  }
+
+  .header-content p {
+    font-size: 1rem;
+  }
+
+  .dashboard-main {
+    padding: 1.25rem;
+  }
+
+  .bento-header {
+    padding: 1.25rem;
+  }
+
+  .bh-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .hazard-cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-item {
+    min-width: 180px;
+    padding: 10px 12px;
+  }
+
+  .nav-label {
+    font-size: 0.85rem;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .k3-header {
+    padding: 2.5rem 1rem;
+  }
+
+  .text-gradient {
+    font-size: 1.5rem;
+  }
+
+  .sidebar-header {
+    padding: 1rem;
+  }
+
+  .sidebar-title {
+    font-size: 0.9rem;
+  }
+
+  .nav-item {
+    min-width: 150px;
+  }
+
+  .nav-icon-wrapper {
+    width: 36px;
+    height: 36px;
   }
 }
 </style>

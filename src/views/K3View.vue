@@ -159,13 +159,21 @@
                     </svg></div>
                   <h3>Persyaratan APD Wajib</h3>
                 </div>
-                <div class="apd-tags">
-                  <span v-for="(apd, index) in currentTabData.apd" :key="index" class="apd-tag">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    {{ apd }}
-                  </span>
+                <div class="apd-grid">
+                  <div v-for="(apd, index) in currentTabData.apd" :key="index" class="apd-card">
+                    <div class="apd-img-wrapper">
+                      <img v-if="apd.img" :src="apd.img" :alt="apd.name" />
+                      <div v-else class="apd-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="apd-info">
+                      <strong>{{ apd.name }}</strong>
+                      <p>{{ apd.desc }}</p>
+                    </div>
+                  </div>
                 </div>
                 <div class="cctv-alert">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -251,7 +259,12 @@ const k3Data = [
       'SOP pengangkatan manual maksimal 25 kg. Di atas itu wajib APM.',
       'Pengecekan integritas korosi rak secara berkala.'
     ],
-    apd: ['Safety Helmet', 'Sepatu Safety', 'High Visibility Vest', 'Sarung Tangan Mekanik']
+    apd: [
+      { name: 'Safety Helmet', img: '/apd/safety_helmet.png', desc: 'Melindungi kepala dari benturan material jatuh.' },
+      { name: 'Sepatu Safety', img: '/apd/safety_shoes.png', desc: 'Melindungi kaki dari lindasan benda berat/forklift.' },
+      { name: 'High Visibility Vest', img: '/apd/safety_vest.png', desc: 'Meningkatkan visibilitas pekerja di area alat berat.' },
+      { name: 'Sarung Tangan Mekanik', img: '/apd/mechanic_gloves.png', desc: 'Melindungi tangan dari abrasi kasar.' }
+    ]
   },
   {
     id: 'lab',
@@ -270,7 +283,12 @@ const k3Data = [
       'Emergency Eye Wash & Shower diverifikasi fungsinya mingguan.',
       'Pengelolaan limbah B3 ke pembuangan spesifik terkunci.'
     ],
-    apd: ['Jas Lab Tahan Bahan Kimia', 'Goggles Anti-Cipratan', 'Respirator Organik', 'Sarung tangan Nitril']
+    apd: [
+      { name: 'Jas Lab Tahan Kimia', img: '/apd/lab_coat.png', desc: 'Melindungi tubuh dari cipratan zat asam/basa.' },
+      { name: 'Goggles Anti-Cipratan', img: '/apd/safety_goggles.png', desc: 'Melindungi area mata dari uap atau cairan berbahaya.' },
+      { name: 'Respirator Organik', img: '/apd/respirator.png', desc: 'Menyaring uap solven beracun.' },
+      { name: 'Sarung Tangan Nitril', img: '/apd/nitrile_gloves.png', desc: 'Tahan terhadap bahan kimia korosif.' }
+    ]
   },
   {
     id: 'produksi',
@@ -289,7 +307,12 @@ const k3Data = [
       'Rotasi pekerja (<2 jam parsial di area bising).',
       'Maintaining Positive Air Pressure & HEPA filters cycle.'
     ],
-    apd: ['Hairnet & Masker Steril', 'Wearpack Antistatis', 'Earmuff / Earplug', 'Sepatu Boot Sanitasi']
+    apd: [
+      { name: 'Hairnet & Masker Steril', img: '/apd/hairnet_mask.png', desc: 'Mencegah kontaminasi silang ke dalam produk.' },
+      { name: 'Wearpack Antistatis', img: '/apd/wearpack.png', desc: 'Mencegah percikan statis di area serbuk.' },
+      { name: 'Earmuff / Earplug', img: '/apd/earmuff.png', desc: 'Mengurangi paparan bising mesin >85 dBA.' },
+      { name: 'Sepatu Boot Sanitasi', img: '/apd/sanitation_boots.png', desc: 'Menjaga area produksi tetap higienis.' }
+    ]
   },
   {
     id: 'ipal',
@@ -308,7 +331,12 @@ const k3Data = [
       'Deployment Gas Detector Portabel sebelum shift.',
       'Imunisasi/Vaksinasi wajib bagi Operator IPAL.'
     ],
-    apd: ['Full Face Respirator', 'Heavy Duty PVC Gloves', 'Sepatu Boot Karet', 'Harness / Fall Protection']
+    apd: [
+      { name: 'Full Face Respirator', img: '/apd/full_face_respirator.png', desc: 'Melindungi wajah & napas dari gas H2S.' },
+      { name: 'Heavy Duty PVC Gloves', img: '/apd/pvc_gloves.png', desc: 'Perlindungan maksimal dari bakteri & cairan.' },
+      { name: 'Sepatu Boot Karet', img: '/apd/rubber_boots.png', desc: 'Mencegah terpeleset di lumpur licin.' },
+      { name: 'Harness / Fall Protection', img: '/apd/safety_harness.png', desc: 'Menahan tubuh dari risiko jatuh ke kolam.' }
+    ]
   }
 ]
 
@@ -616,17 +644,16 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
 /* --- MAIN BENTO GRID DASHBOARD --- */
 .dashboard-main {
   flex: 1;
-  padding: 2rem;
+  padding: 1.5rem;
   background: #f8fafc;
-  /* Latar abu-abu sangat muda */
   overflow-y: auto;
 }
 
 .bento-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 1100px;
+  gap: 1rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -636,7 +663,7 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   justify-content: space-between;
   align-items: center;
   background: #ffffff;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 20px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
   border: 1px solid #e2e8f0;
@@ -797,9 +824,13 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
 
 .hazard-card {
   background: #ffffff;
-  padding: 1.5rem;
-  border-radius: 20px;
+  padding: 1.25rem;
+  border-radius: 16px;
   border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .interactive-hover {
@@ -898,7 +929,7 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
 
 .mitigation-box {
   background: #ffffff;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 20px;
   border: 1px solid #e2e8f0;
 }
@@ -907,7 +938,7 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .box-header h3 {
@@ -969,30 +1000,86 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
   box-shadow: 0 0 0 3px #dcfce7;
 }
 
-.apd-tags {
+.apd-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.8rem;
   margin-bottom: 1.5rem;
 }
 
-.apd-tag {
+.apd-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #334155;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 0.75rem;
+  gap: 1rem;
 }
 
-.apd-tag svg {
-  width: 16px;
-  height: 16px;
-  color: #10b981;
+.apd-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+  border-color: #a7f3d0;
+  background: #ffffff;
+}
+
+.apd-img-wrapper {
+  width: 64px;
+  height: 64px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  flex-shrink: 0;
+  padding: 0.3rem;
+}
+
+.apd-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.apd-card:hover .apd-img-wrapper img {
+  transform: scale(1.1);
+}
+
+.apd-placeholder {
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apd-placeholder svg {
+  width: 32px;
+  height: 32px;
+}
+
+.apd-info {
+  padding: 0;
+  flex: 1;
+}
+
+.apd-info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+  font-weight: 700;
+}
+
+.apd-info p {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .cctv-alert {
@@ -1302,13 +1389,8 @@ const currentTabData = computed(() => k3Data.find(area => area.id === activeTab.
     font-size: 1.2rem;
   }
 
-  .apd-tags {
-    gap: 0.5rem;
-  }
-
-  .apd-tag {
-    font-size: 0.82rem;
-    padding: 6px 10px;
+  .apd-grid {
+    gap: 0.6rem;
   }
 
   .task-list li {

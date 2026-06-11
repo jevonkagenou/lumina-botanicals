@@ -17,76 +17,13 @@
       </button>
     </div>
 
-    <div class="map-container-wrapper animate-slide-up fade-delay-2">
+    <div class="map-layout-grid">
+      <div class="map-container-wrapper animate-slide-up fade-delay-2">
       <transition name="fade-slide" mode="out-in">
         <div v-if="activeView === 'map'" key="map" class="map-view-wrapper">
-          <!-- Legend Panel -->
-          <div class="legend-panel">
-            <h4>Legend</h4>
-            <div class="legend-grid">
-              <div class="legend-item">
-                <div class="legend-icon fire-ext">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M7 4h10v2H7zM5 8h14v14H5zM12 10a2 2 0 100 4 2 2 0 000-4z" />
-                  </svg>
-                </div>
-                <span>Fire Extinguisher</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-icon first-aid">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
-                  </svg>
-                </div>
-                <span>First Aid</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-icon emergency-exit">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </div>
-                <span>Emergency Exit</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-icon warning">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                  </svg>
-                </div>
-                <span>Warning</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-icon no-smoking">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
-                  </svg>
-                </div>
-                <span>No Smoking</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-icon ppe">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 5a6 6 0 0 0-6 6v2h12v-2a6 6 0 0 0-6-6z" />
-                    <rect x="5" y="13" width="14" height="2" />
-                  </svg>
-                </div>
-                <span>PPE Required</span>
-              </div>
-            </div>
-          </div>
 
-      <!-- Tooltip -->
-      <div v-if="hoveredRoom" ref="tooltipEl" class="map-tooltip"
-        :style="{ left: tooltipX + 'px', top: tooltipY + 'px' }">
-        <h4>{{ hoveredRoom.name }}</h4>
-        <span class="room-zone">{{ hoveredRoom.zone }}</span>
-        <p v-if="hoveredRoom.desc">{{ hoveredRoom.desc }}</p>
-      </div>
+
+
 
       <!-- SVG Map -->
       <div class="svg-container" @mousemove="updateTooltipPos">
@@ -350,6 +287,66 @@
 
         </svg>
         </div>
+        
+        <!-- Legend Panel -->
+        <div class="legend-panel">
+          <span class="legend-title">Legend:</span>
+          <div class="legend-grid">
+            <div class="legend-item">
+              <div class="legend-icon fire-ext">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 4h10v2H7zM5 8h14v14H5zM12 10a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </div>
+              <span>Fire Extinguisher</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-icon first-aid">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+                </svg>
+              </div>
+              <span>First Aid</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-icon emergency-exit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
+              <span>Emergency Exit</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-icon warning">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+              </div>
+              <span>Warning</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-icon no-smoking">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                </svg>
+              </div>
+              <span>No Smoking</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-icon ppe">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 5a6 6 0 0 0-6 6v2h12v-2a6 6 0 0 0-6-6z" />
+                  <rect x="5" y="13" width="14" height="2" />
+                </svg>
+              </div>
+              <span>PPE Required</span>
+            </div>
+          </div>
+        </div>
       </div>
       
       <!-- ORG CHART -->
@@ -410,6 +407,59 @@
       
       </transition>
     </div>
+
+    <!-- Info Panel Interaktif -->
+    <div class="interactive-info-panel" v-if="selectedInfo">
+      <div class="panel-header">
+        <div class="panel-icon" :class="selectedInfo.type">
+          <svg v-if="selectedInfo.type === 'org'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        </div>
+        <div class="panel-title">
+          <h3>{{ selectedInfo.title }}</h3>
+          <span class="panel-subtitle">{{ selectedInfo.subtitle }}</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <p class="panel-desc">{{ selectedInfo.desc }}</p>
+        
+        <div class="hazard-section" v-if="selectedInfo.type === 'map' && selectedInfo.hazards && selectedInfo.hazards.length">
+          <h4><span class="pulse-dot"></span> Jenis Bahaya (K3)</h4>
+          <div class="hazard-grid">
+            <div class="hazard-item" v-for="(h, idx) in selectedInfo.hazards" :key="idx">
+              <span class="hazard-type" :class="h.type.toLowerCase()">{{ h.type }}</span>
+              <div class="hazard-text">
+                <strong>{{ h.name }}</strong>
+                <span>{{ h.detail }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="org-section" v-if="selectedInfo.type === 'org'">
+          <h4><span class="pulse-dot blue"></span> Fungsi & Aktivitas Utama</h4>
+          <ul class="task-list">
+            <li v-for="(t, idx) in selectedInfo.tasks" :key="idx">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>{{ t }}</span>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    
+    <div class="interactive-info-panel placeholder" v-else>
+      <div class="placeholder-content">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <p>Arahkan kursor atau klik pada area denah / posisi organisasi untuk melihat detail informasi dan fungsi K3.</p>
+      </div>
+    </div>
+
+    </div>
   </div>
 </template>
 
@@ -421,6 +471,50 @@ const hoveredRoom = ref(null)
 const tooltipEl = ref(null)
 const tooltipX = ref(0)
 const tooltipY = ref(0)
+const selectedInfo = ref(null)
+
+const mapHazardsDb = {
+  'Raw Material Storage': [
+    { type: 'Fisik', name: 'Sistem Rak Stacking Tinggi', detail: 'Barang jatuh akibat overloading (Risiko Tertimpa)' },
+    { type: 'Fisik', name: 'Manuver Kendaraan Forklift', detail: 'Blind spot operator (Risiko Tertabrak)' },
+    { type: 'Ergonomi', name: 'Manual Material Handling', detail: 'Postur tubuh membungkuk (Risiko Low Back Pain)' }
+  ],
+  'Main Production Hall': [
+    { type: 'Fisik', name: 'Mixer Homogenizer Industri', detail: 'Mesin berputar kecepatan tinggi (Risiko Amputasi)' },
+    { type: 'Fisik', name: 'Aktivasi Motor Mesin', detail: 'Paparan bising kontinu > 85 dBA (Risiko Gangguan Pendengaran)' },
+    { type: 'Kimia', name: 'Penuangan Serbuk', detail: 'Paparan debu partikulat (Risiko ISPA)' }
+  ],
+  'Research & Mixing Lab': [
+    { type: 'Kimia', name: 'Reagen Asam/Basa Kuat', detail: 'Tumpahan saat pemindahan bahan (Luka bakar kimia)' },
+    { type: 'Kimia', name: 'Reaksi Gas / Uap Solven', detail: 'Fume hood mati (Risiko Keracunan)' },
+    { type: 'Fisik', name: 'Hot Plate & Ovens', detail: 'Permukaan panas (Luka bakar termal)' }
+  ],
+  'IPAL': [
+    { type: 'Fisik', name: 'Kolam Bak Aerasi', detail: 'Lantai licin (Risiko Tenggelam lumpur aktif)' },
+    { type: 'Kimia', name: 'Gas Beracun (H2S)', detail: 'Dekomposisi anaerob (Risiko Asfiksia letal)' },
+    { type: 'Biologis', name: 'Bakteri Patogen Lumpur', detail: 'Kontak material (Risiko Infeksi sepsis)' }
+  ]
+}
+
+const orgTasksDb = {
+  'Dir. Keuangan (CFO)': ['Merencanakan strategi keuangan jangka panjang.', 'Mengawasi arus kas dan likuiditas perusahaan.', 'Memastikan kepatuhan pajak dan audit.'],
+  'Dir. Operasional (COO)': ['Mengoptimalkan efisiensi rantai pasok pabrik.', 'Memastikan target produksi harian tercapai.', 'Mengontrol standar K3 di seluruh area fasilitas.'],
+  'Dir. Pemasaran (CMO)': ['Merancang kampanye produk Lumina.', 'Membangun relasi dengan distributor global.', 'Analisis tren pasar produk botani.'],
+  'Dir. SDM & Umum (CHRO)': ['Mengelola kesejahteraan dan fasilitas karyawan.', 'Strategi rekrutmen talenta terbaik.', 'Menyelenggarakan pelatihan K3 berkelanjutan.'],
+  'Dir. Teknologi (CTO)': ['Pemeliharaan server dan jaringan CCTV AI.', 'Inovasi otomatisasi mesin produksi.', 'Cybersecurity data resep rahasia perusahaan.'],
+  'Manajer Operasional': ['Supervisi manajer lini produksi.', 'Monitoring kualitas barang jadi.', 'Penjadwalan shift operator alat berat.'],
+  'Spv. Operasional': ['Briefing K3 harian sebelum shift dimulai.', 'Inspeksi mesin mixer dan sensor interlock.', 'Laporan harian output mesin.'],
+  'Staff Operasional': ['Quality Control sampel produk.', 'Pengecekan logistik bahan baku.', 'Pengisian formulir LOTO pada mesin rusak.']
+}
+
+// Default helper to generate placeholder tasks if missing
+const generateOrgTasks = (level, desc) => {
+  return [
+    `Fokus pada ${desc.toLowerCase()}.`,
+    `Berkoordinasi di tingkat ${level}.`,
+    'Memastikan SOP berjalan dengan baik.'
+  ]
+}
 
 const GAP = 12 // Fixed gap between cursor and tooltip (px)
 
@@ -490,6 +584,26 @@ const orgData = [
 
 const setHover = (name, zone, desc) => {
   hoveredRoom.value = { name, zone, desc }
+  
+  const isOrg = zone.includes('Tingkat') || zone.includes('Level') || zone.includes('Eksekutif') || zone.includes('Pemegang')
+  
+  if (isOrg) {
+    selectedInfo.value = {
+      type: 'org',
+      title: name,
+      subtitle: zone,
+      desc: desc,
+      tasks: orgTasksDb[name] || generateOrgTasks(zone, desc)
+    }
+  } else {
+    selectedInfo.value = {
+      type: 'map',
+      title: name,
+      subtitle: zone,
+      desc: desc,
+      hazards: mapHazardsDb[name] || []
+    }
+  }
 }
 
 const clearHover = () => {
@@ -582,7 +696,16 @@ const updateTooltipPos = (e) => {
   font-size: 1.1rem;
 }
 
+.map-layout-grid {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
 .map-container-wrapper {
+  flex: 1;
+  min-width: 0;
   position: relative;
   background: #ffffff;
   border-radius: 24px;
@@ -591,45 +714,41 @@ const updateTooltipPos = (e) => {
   overflow: hidden;
   padding: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .legend-panel {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f8fafc;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
   border: 1px solid #e2e8f0;
-  z-index: 10;
-  pointer-events: none;
+  margin-top: 1.5rem;
 }
 
-.legend-panel h4 {
-  margin: 0 0 1rem;
+.legend-title {
   font-weight: 800;
   color: #0f172a;
-  border-bottom: 2px solid #f1f5f9;
-  padding-bottom: 0.5rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
 }
 
 .legend-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  flex: 1;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 8px;
   font-size: 0.85rem;
-  font-weight: 600;
   color: #475569;
+  font-weight: 700;
 }
 
 .legend-icon {
@@ -896,10 +1015,193 @@ const updateTooltipPos = (e) => {
 }
 
 .view-toggle button.active {
-  background: #047857; /* Emerald 700 */
+  background: #10b981; /* Primary Green */
   color: white;
-  border-color: #047857;
-  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.25);
+  border-color: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.interactive-info-panel {
+  box-sizing: border-box;
+  width: 380px;
+  height: 620px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 2rem;
+}
+
+.interactive-info-panel.placeholder {
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  color: #64748b;
+}
+
+.placeholder-content svg {
+  width: 48px;
+  height: 48px;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+.placeholder-content p {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.panel-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.panel-icon.map { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); }
+.panel-icon.org { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
+
+.panel-icon svg { width: 24px; height: 24px; }
+
+.panel-title h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.panel-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.panel-content {
+  padding: 2rem;
+}
+
+.panel-desc {
+  font-size: 1.05rem;
+  color: #334155;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.hazard-section h4, .org-section h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 1rem;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  background: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+}
+.pulse-dot.blue {
+  background: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.hazard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.hazard-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+}
+
+.hazard-type {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+.hazard-type.fisik { background: #fee2e2; color: #b91c1c; }
+.hazard-type.kimia { background: #fef3c7; color: #b45309; }
+.hazard-type.ergonomi { background: #e0e7ff; color: #4338ca; }
+.hazard-type.biologis { background: #dcfce7; color: #15803d; }
+
+.hazard-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #1e293b;
+  margin-bottom: 0.3rem;
+}
+.hazard-text span {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.4;
+  display: block;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.task-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: #475569;
+  background: #f8fafc;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+  flex-shrink: 0;
+}
+
+.task-list li svg {
+  width: 18px;
+  height: 18px;
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .map-view-wrapper {
@@ -926,7 +1228,6 @@ const updateTooltipPos = (e) => {
   flex-direction: column;
   align-items: center;
   font-family: 'Inter', sans-serif;
-  transform: scale(0.95);
 }
 
 .org-level {
@@ -935,14 +1236,14 @@ const updateTooltipPos = (e) => {
 }
 
 .org-node {
-  padding: 6px 12px;
+  padding: 4px 6px;
   border-radius: 6px;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 700;
   color: white;
   text-align: center;
-  min-width: 140px;
-  max-width: 160px;
+  min-width: 85px;
+  max-width: 100px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
@@ -950,7 +1251,8 @@ const updateTooltipPos = (e) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  min-height: 36px;
+  line-height: 1.15;
 }
 
 .org-node:hover {
@@ -996,7 +1298,7 @@ const updateTooltipPos = (e) => {
 .org-branches {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 8px;
   width: 100%;
   margin-top: -2px; /* Pull up to touch the horizontal line */
 }
@@ -1069,17 +1371,6 @@ const updateTooltipPos = (e) => {
     padding: 0.75rem;
   }
 
-  /* Reposition legend: take it out of absolute, put below map */
-  .legend-panel {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    margin: 0.75rem;
-    pointer-events: auto;
-    width: calc(100% - 1.5rem);
-    box-sizing: border-box;
-  }
-
   .map-view-wrapper {
     flex-direction: column;
   }
@@ -1128,15 +1419,8 @@ const updateTooltipPos = (e) => {
 
   /* Legend: compact grid */
   .legend-panel {
-    padding: 1rem;
-    border-radius: 12px;
-    margin: 0.5rem;
-    width: calc(100% - 1rem);
-  }
-
-  .legend-panel h4 {
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .legend-grid {

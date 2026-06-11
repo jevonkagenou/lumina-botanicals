@@ -24,7 +24,7 @@
         <router-link to="/" exact-active-class="active">Beranda</router-link>
         <router-link to="/profil" active-class="active">Profil Perusahaan</router-link>
         <router-link to="/k3" active-class="active">Regulasi K3</router-link>
-        <router-link to="/map" active-class="active">Fasilitas &amp; Organisasi</router-link>
+        <router-link to="/fasilitas" active-class="active">Fasilitas &amp; Organisasi</router-link>
         <router-link to="/lapor" active-class="active" class="btn-lapor">
           <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
@@ -98,7 +98,7 @@
             </router-link>
 
             <!-- Fasilitas -->
-            <router-link to="/map" active-class="active" @click="mobileMenuOpen = false">
+            <router-link to="/fasilitas" active-class="active" @click="mobileMenuOpen = false">
               <span class="mobile-nav-icon icon-map">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>

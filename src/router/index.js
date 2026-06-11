@@ -32,8 +32,8 @@ const router = createRouter({
             component: LaporView
         },
         {
-            path: '/map',
-            name: 'map',
+            path: '/fasilitas',
+            name: 'fasilitas',
             component: MapView
         }
     ]
